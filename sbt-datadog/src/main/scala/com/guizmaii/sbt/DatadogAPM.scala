@@ -36,11 +36,11 @@ object DatadogAPM extends AutoPlugin {
     )
 
     lazy val datadogProfilingEnabled = settingKey[Boolean](
-      "Datadog Profiling. See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments. Default: 'true'. Deactivated if `datadogApmEnabled` is `false`"
+      "Datadog Profiling. See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments. Default: `DD_PROFILING_ENABLED` envvar value if present, 'true' otherwise. Deactivated if `datadogApmEnabled` is `false`"
     )
 
     lazy val datadogAllocationProfilingEnabled = settingKey[Boolean](
-      "Datadog Allocations Profiling. See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments. Default: 'true'. Deactivated if `datadogApmEnabled` is `false`"
+      "Datadog Allocations Profiling. See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments. Default: `DD_PROFILING_DIRECTALLOCATION_ENABLED` envvar value if present, 'true' otherwise. Deactivated if `datadogApmEnabled` is `false` or `datadogProfilingEnabled` is `false`"
     )
 
     lazy val datadogServiceName = settingKey[String](
