@@ -117,13 +117,16 @@ object DatadogAPM extends AutoPlugin {
                |  else
                |    export __ENABLE_PROFILING__=${datadogProfilingEnabled.value}
                |  fi
+               |else
+               |  export __ENABLE_PROFILING__=false
+               |fi
+               |if [ "$${__ENABLE_PROFILING__}" == "true" ]; then
                |  if [ ! -z "$${DD_PROFILING_DIRECTALLOCATION_ENABLED}" ]; then
                |    export __ENABLE_ALLOCATION_PROFILING__=$${DD_PROFILING_DIRECTALLOCATION_ENABLED}
                |  else
                |    export __ENABLE_ALLOCATION_PROFILING__=${datadogAllocationProfilingEnabled.value}
                |  fi
                |else
-               |  export __ENABLE_PROFILING__=false
                |  export __ENABLE_ALLOCATION_PROFILING__=false
                |fi
                |addJava "-Ddd.trace.enabled=$${__ENABLE_TRACES__}"
