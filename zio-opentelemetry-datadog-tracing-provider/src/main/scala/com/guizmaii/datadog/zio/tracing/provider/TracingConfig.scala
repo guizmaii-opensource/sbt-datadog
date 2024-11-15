@@ -16,6 +16,6 @@ object TracingConfig {
   /**
    * Provides a way to enable or disable the OpenTelemetry Tracing via the `ZIO_OPENTELEMETRY_DATADOG_ENABLED` environment variable.
    */
-  def fromSystemEnv: ZLayer[Any, Throwable, TracingConfig] =
+  def fromSystemEnv: ZLayer[Any, Config.Error, TracingConfig] =
     ZLayer.fromZIO(ConfigProvider.envProvider.load(config))
 }
