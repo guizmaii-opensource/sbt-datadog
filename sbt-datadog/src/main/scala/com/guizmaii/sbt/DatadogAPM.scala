@@ -36,11 +36,11 @@ object DatadogAPM extends AutoPlugin {
     )
 
     lazy val datadogProfilingEnabled = settingKey[Boolean](
-      "Datadog Profiling. See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments. Default: 'true'. Deactivated if `datadogApmEnabled` is `false`"
+      "Datadog Profiling. See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments. Default: `DD_PROFILING_ENABLED` envvar value if present, 'true' otherwise. Deactivated if `datadogApmEnabled` is `false`"
     )
 
     lazy val datadogAllocationProfilingEnabled = settingKey[Boolean](
-      "Datadog Allocations Profiling. See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments. Default: 'true'. Deactivated if `datadogApmEnabled` is `false`"
+      "Datadog Allocations Profiling. See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments. Default: `DD_PROFILING_DIRECTALLOCATION_ENABLED` envvar value if present, 'true' otherwise. Deactivated if `datadogApmEnabled` is `false` or `datadogProfilingEnabled` is `false`"
     )
 
     lazy val datadogServiceName = settingKey[String](
@@ -112,12 +112,20 @@ object DatadogAPM extends AutoPlugin {
                |  export __ENABLE_TRACES__=${datadogApmEnabled.value}
                |fi
                |if [ "$${__ENABLE_TRACES__}" == "true" ]; then
-               |  export __ENABLE_PROFILING__=${datadogProfilingEnabled.value}
+               |  if [ ! -z "$${DD_PROFILING_ENABLED}" ]; then
+               |    export __ENABLE_PROFILING__=$${DD_PROFILING_ENABLED}
+               |  else
+               |    export __ENABLE_PROFILING__=${datadogProfilingEnabled.value}
+               |  fi
                |else
                |  export __ENABLE_PROFILING__=false
                |fi
-               |if [ "$${__ENABLE_TRACES__}" == "true" ]; then
-               |  export __ENABLE_ALLOCATION_PROFILING__=${datadogAllocationProfilingEnabled.value}
+               |if [ "$${__ENABLE_PROFILING__}" == "true" ]; then
+               |  if [ ! -z "$${DD_PROFILING_DIRECTALLOCATION_ENABLED}" ]; then
+               |    export __ENABLE_ALLOCATION_PROFILING__=$${DD_PROFILING_DIRECTALLOCATION_ENABLED}
+               |  else
+               |    export __ENABLE_ALLOCATION_PROFILING__=${datadogAllocationProfilingEnabled.value}
+               |  fi
                |else
                |  export __ENABLE_ALLOCATION_PROFILING__=false
                |fi
