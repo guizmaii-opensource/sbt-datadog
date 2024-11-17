@@ -1,6 +1,6 @@
 package org.example.datadog.otlp
 
-import com.guizmaii.datadog.zio.tracing.provider.{TracingConfig, TracingProvider}
+import com.guizmaii.datadog.zio.tracing.provider.{OpenTelemetryConfig, OpenTelemetryProvider}
 import zio._
 
 object Main extends ZIOAppDefault {
@@ -12,7 +12,10 @@ object Main extends ZIOAppDefault {
       } yield ()
     ).provide(
       MyService.live,
-      TracingProvider.live(appName = "my-app", appVersion = Some("1.0.0")),
-      TracingConfig.fromSystemEnv,
+      OpenTelemetryProvider.autoInstrumentation(
+        instrumentationScopeName = "my-app",
+        instrumentationVersion = Some("1.0.0"),
+      ),
+      OpenTelemetryConfig.fromSystemEnv,
     )
 }
