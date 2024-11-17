@@ -48,10 +48,11 @@ datadogApmVersion := "1.36.0"
 #### `datadogApmEnabled`
 
 You can easily disable the Datadog APM by settings this setting to `false`.     
-Note that if you have the `DD_TRACE_ENABLED` environment variable set, it'll take precedence over this setting.     
 See https://docs.datadoghq.com/tracing/trace_collection/library_config/java/     
 
 Default value: `true`
+
+If you have the `DD_TRACE_ENABLED` environment variable set, it'll take precedence over this setting.
 
 ```scala
 datadogApmEnabled := true
@@ -62,8 +63,10 @@ datadogApmEnabled := true
 Datadog Profiling.
 See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments
 
-Default value: `true`
+Default value: `true`    
 Will be deactivated if `datadogApmEnabled` is `false`
+
+If you have the `DD_PROFILING_ENABLED` environment variable set, it'll take precedence over this setting.
 
 ```scala
 datadogProfilingEnabled := true
@@ -74,8 +77,10 @@ datadogProfilingEnabled := true
 Datadog Allocations Profiling.
 See https://docs.datadoghq.com/profiler/enabling/java/?tab=commandarguments
 
-Default value: `true`
+Default value: `true`    
 Will be deactivated if `datadogApmEnabled` is `false`
+
+If you have the `DD_PROFILING_DIRECTALLOCATION_ENABLED` environment variable set, it'll take precedence over this setting.
 
 ```scala
 datadogAllocationProfilingEnabled := true
