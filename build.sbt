@@ -44,7 +44,7 @@ lazy val `sbt-datadog` =
       name         := "sbt-datadog",
       scalaVersion := scala212,
       sbtPlugin    := true,
-      addSbtPlugin("com.github.sbt" % "sbt-native-packager" % "1.10.4" % "provided"),
+      addSbtPlugin("com.github.sbt" % "sbt-native-packager" % "1.11.0" % "provided"),
     )
 
 lazy val `zio-opentelemetry-datadog-tracing-provider` =
