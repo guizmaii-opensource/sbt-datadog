@@ -22,7 +22,7 @@ addCommandAlias(
 
 val scala212 = "2.12.20"
 val scala213 = "2.13.16"
-val scala3   = "3.3.5"
+val scala3   = "3.3.6"
 
 lazy val root =
   project
@@ -57,7 +57,7 @@ lazy val `zio-opentelemetry-datadog-tracing-provider` =
       libraryDependencies ++= Seq(
         "dev.zio"         %% "zio"               % "2.1.17" % "provided",
         "dev.zio"         %% "zio-config"        % "4.0.4"  % "provided",
-        "dev.zio"         %% "zio-opentelemetry" % "3.1.3",
+        "dev.zio"         %% "zio-opentelemetry" % "3.1.4",
         "io.opentelemetry" % "opentelemetry-api" % "1.50.0",
       ),
     )
