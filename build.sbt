@@ -52,7 +52,7 @@ lazy val `zio-opentelemetry-datadog-tracing-provider` =
         "dev.zio"         %% "zio"               % "2.1.20" % "provided",
         "dev.zio"         %% "zio-config"        % "4.0.4"  % "provided",
         "dev.zio"         %% "zio-opentelemetry" % "3.1.7",
-        "io.opentelemetry" % "opentelemetry-api" % "1.52.0",
+        "io.opentelemetry" % "opentelemetry-api" % "1.53.0",
       ),
     )
 
