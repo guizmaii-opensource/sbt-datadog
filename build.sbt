@@ -50,7 +50,7 @@ lazy val `zio-opentelemetry-datadog-tracing-provider` =
       crossScalaVersions := Seq(scala212, scala213, scala3),
       libraryDependencies ++= Seq(
         "dev.zio"         %% "zio"               % "2.1.21" % "provided",
-        "dev.zio"         %% "zio-config"        % "4.0.4"  % "provided",
+        "dev.zio"         %% "zio-config"        % "4.0.5"  % "provided",
         "dev.zio"         %% "zio-opentelemetry" % "3.1.8",
         "io.opentelemetry" % "opentelemetry-api" % "1.54.0",
       ),
@@ -66,7 +66,7 @@ lazy val `my-traced-zio-project-example` =
       scalaVersion := scala213,
       libraryDependencies ++= Seq(
         "dev.zio" %% "zio"        % "2.1.21",
-        "dev.zio" %% "zio-config" % "4.0.4",
+        "dev.zio" %% "zio-config" % "4.0.5",
       ),
       //
       // This is an example of configuration you need to add in your project to configure sbt-datadog and the Datadog APM Agent
