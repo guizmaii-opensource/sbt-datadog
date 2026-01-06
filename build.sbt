@@ -49,7 +49,7 @@ lazy val `zio-opentelemetry-datadog-tracing-provider` =
       scalaVersion       := scala213,
       crossScalaVersions := Seq(scala212, scala213, scala3),
       libraryDependencies ++= Seq(
-        "dev.zio"         %% "zio"               % "2.1.23" % "provided",
+        "dev.zio"         %% "zio"               % "2.1.24" % "provided",
         "dev.zio"         %% "zio-config"        % "4.0.6"  % "provided",
         "dev.zio"         %% "zio-opentelemetry" % "3.1.13",
         "io.opentelemetry" % "opentelemetry-api" % "1.57.0",
@@ -65,7 +65,7 @@ lazy val `my-traced-zio-project-example` =
       name         := "my-traced-zio-project-example",
       scalaVersion := scala213,
       libraryDependencies ++= Seq(
-        "dev.zio" %% "zio"        % "2.1.23",
+        "dev.zio" %% "zio"        % "2.1.24",
         "dev.zio" %% "zio-config" % "4.0.6",
       ),
       //
