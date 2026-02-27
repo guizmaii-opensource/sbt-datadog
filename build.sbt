@@ -15,7 +15,6 @@ ThisBuild / developers    :=
   )
 
 val scala212 = "2.12.21"
-val scala213 = "2.13.18"
 val scala3   = "3.3.7"
 
 lazy val root =
@@ -46,8 +45,8 @@ lazy val `zio-opentelemetry-datadog-tracing-provider` =
     .in(file("zio-opentelemetry-datadog-tracing-provider"))
     .settings(
       name               := "zio-opentelemetry-datadog-tracing-provider",
-      scalaVersion       := scala213,
-      crossScalaVersions := Seq(scala212, scala213, scala3),
+      scalaVersion       := scala3,
+      crossScalaVersions := Seq(scala3),
       libraryDependencies ++= Seq(
         "dev.zio"         %% "zio"               % "2.1.24" % "provided",
         "dev.zio"         %% "zio-config"        % "4.0.6"  % "provided",
@@ -63,7 +62,7 @@ lazy val `my-traced-zio-project-example` =
     .settings(publish / skip := true)
     .settings(
       name         := "my-traced-zio-project-example",
-      scalaVersion := scala213,
+      scalaVersion := scala3,
       libraryDependencies ++= Seq(
         "dev.zio" %% "zio"        % "2.1.24",
         "dev.zio" %% "zio-config" % "4.0.6",
