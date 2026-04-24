@@ -50,7 +50,7 @@ lazy val `zio-opentelemetry-datadog-tracing-provider` =
       libraryDependencies ++= Seq(
         "dev.zio"         %% "zio"               % "2.1.25" % "provided",
         "dev.zio"         %% "zio-config"        % "4.0.7"  % "provided",
-        "dev.zio"         %% "zio-opentelemetry" % "3.1.15",
+        "dev.zio"         %% "zio-opentelemetry" % "3.1.16",
         "io.opentelemetry" % "opentelemetry-api" % "1.61.0",
       ),
     )
