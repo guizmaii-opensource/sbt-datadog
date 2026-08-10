@@ -14,8 +14,9 @@ ThisBuild / developers    :=
     )
   )
 
-val scala212 = "2.12.21"
-val scala3   = "3.3.8"
+val scala212    = "2.12.21"
+val scala3      = "3.3.8"
+val scalaForSbt2 = "3.8.3"
 
 lazy val root =
   project
@@ -34,9 +35,16 @@ lazy val `sbt-datadog` =
   project
     .in(file("sbt-datadog"))
     .settings(
-      name         := "sbt-datadog",
-      scalaVersion := scala212,
-      sbtPlugin    := true,
+      name               := "sbt-datadog",
+      scalaVersion       := scala212,
+      crossScalaVersions := Seq(scala212, scalaForSbt2),
+      sbtPlugin          := true,
+      pluginCrossBuild / sbtVersion := {
+        scalaBinaryVersion.value match {
+          case "2.12" => "1.9.0"
+          case _      => "2.0.0"
+        }
+      },
       addSbtPlugin("com.github.sbt" % "sbt-native-packager" % "1.11.7" % "provided"),
     )
 
