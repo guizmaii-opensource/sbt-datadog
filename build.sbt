@@ -36,8 +36,8 @@ lazy val `sbt-datadog` =
     .in(file("sbt-datadog"))
     .settings(
       name                          := "sbt-datadog",
-      scalaVersion                  := scala212,
-      crossScalaVersions            := Seq(scala212, scalaForSbt2),
+      scalaVersion                  := scalaForSbt2,
+      crossScalaVersions            := Seq(scalaForSbt2, scala212),
       sbtPlugin                     := true,
       pluginCrossBuild / sbtVersion := {
         scalaBinaryVersion.value match {
