@@ -41,8 +41,8 @@ lazy val `sbt-datadog` =
       sbtPlugin                     := true,
       pluginCrossBuild / sbtVersion := {
         scalaBinaryVersion.value match {
-          case "2.12" => "1.9.0"
-          case _      => "2.0.0"
+          case "2.12" => "1.12.15"
+          case _      => "2.0.6"
         }
       },
       addSbtPlugin("com.github.sbt" % "sbt-native-packager" % "1.11.7" % "provided"),

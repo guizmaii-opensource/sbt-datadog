@@ -5,6 +5,6 @@ import java.io.File
 import xsbti.FileConverter
 
 private[sbt] object DatadogCompat {
-  def toDatadogAgentMapping(agentJar: File, conv: FileConverter): Seq[(PluginCompat.FileRef, String)] =
-    PluginCompat.toFileRefsMapping(Seq(agentJar -> "datadog/dd-java-agent.jar"))(using conv)
+  def toFileRefsMapping(mappings: Seq[(File, String)], conv: FileConverter): Seq[(PluginCompat.FileRef, String)] =
+    PluginCompat.toFileRefsMapping(mappings)(using conv)
 }

@@ -82,7 +82,8 @@ object DatadogAPM extends AutoPlugin {
       ),
     Universal / mappings ++=
       (
-        if (datadogApmEnabled.value) DatadogCompat.toDatadogAgentMapping(datadogJavaAgent.value, fileConverter.value)
+        if (datadogApmEnabled.value)
+          DatadogCompat.toFileRefsMapping(Seq(datadogJavaAgent.value -> "datadog/dd-java-agent.jar"), fileConverter.value)
         else Seq.empty
       ),
     bashScriptExtraDefines ++=
