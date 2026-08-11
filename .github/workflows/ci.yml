@@ -20,7 +20,7 @@ jobs:
           java-version: 17
           check-latest: true
       - name: Run scalafix and scalafmt
-        run: sbt 'scalafmtSbtCheck; scalafmtCheckAll;'
+        run: sbt 'scalafmtSbtCheck; +scalafmtCheckAll;'
 
   ci:
     runs-on: ubuntu-latest

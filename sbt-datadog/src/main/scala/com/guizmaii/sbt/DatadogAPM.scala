@@ -29,7 +29,7 @@ object DatadogAPM extends AutoPlugin {
   object autoImport {
     lazy val datadogApmVersion = settingKey[String]("Datadog APM agent version")
 
-    lazy val datadogJavaAgent = taskKey[File]("Datadog agent jar location")
+    @transient lazy val datadogJavaAgent = taskKey[File]("Datadog agent jar location")
 
     lazy val datadogApmEnabled = settingKey[Boolean](
       "Datadog APM agent enabled. Default: `DD_TRACE_ENABLED` envvar value if present, 'true' otherwise"
@@ -82,7 +82,8 @@ object DatadogAPM extends AutoPlugin {
       ),
     Universal / mappings ++=
       (
-        if (datadogApmEnabled.value) Seq(datadogJavaAgent.value -> "datadog/dd-java-agent.jar")
+        if (datadogApmEnabled.value)
+          DatadogCompat.toFileRefsMapping(Seq(datadogJavaAgent.value -> "datadog/dd-java-agent.jar"), fileConverter.value)
         else Seq.empty
       ),
     bashScriptExtraDefines ++=
@@ -148,9 +149,9 @@ object DatadogAPM extends AutoPlugin {
       ),
   )
 
-  private[this] def findDatadogJavaAgent(report: UpdateReport) = report.matching(datadogFilter).head
+  private def findDatadogJavaAgent(report: UpdateReport) = report.matching(datadogFilter).head
 
-  private[this] val datadogFilter: DependencyFilter =
+  private val datadogFilter: DependencyFilter =
     configurationFilter("dd-java-agent") && artifactFilter(`type` = "jar")
 
 }
