@@ -17,6 +17,7 @@ The plugin assumes that sbt-native-packager has been included in your SBT build 
 This can be done by adding the plugin following instructions at http://www.scala-sbt.org/sbt-native-packager/ or by adding
 another plugin that includes and initializes it (e.g. the SBT plugin for Play 2.6.x).
 
+`sbt-datadog` is cross-published for both sbt 1.x and sbt 2.x, so it works whichever sbt major version your project uses.
 
 Installation
 ------------
