@@ -101,9 +101,9 @@ object DatadogAPM extends AutoPlugin {
             // I'm clearly not an expert in Bash... At least, it's explicit...
             s"""
                |if [ ! -z "$${DD_TRACE_ENABLED}" ]; then # See https://stackoverflow.com/a/39296583/2431728
-               |  if [ "$${DD_TRACE_ENABLED}" == "true" ]; then
+               |  if [ "$${DD_TRACE_ENABLED}" = "true" ]; then
                |    export __ENABLE_TRACES__=true
-               |  elif [ "$${DD_TRACE_ENABLED}" == "false" ]; then
+               |  elif [ "$${DD_TRACE_ENABLED}" = "false" ]; then
                |    export __ENABLE_TRACES__=false
                |  else
                |    echo "Invalid value for DD_TRACE_ENABLED: $${DD_TRACE_ENABLED}. Must be 'true' or 'false'"
@@ -112,7 +112,7 @@ object DatadogAPM extends AutoPlugin {
                |else
                |  export __ENABLE_TRACES__=${datadogApmEnabled.value}
                |fi
-               |if [ "$${__ENABLE_TRACES__}" == "true" ]; then
+               |if [ "$${__ENABLE_TRACES__}" = "true" ]; then
                |  if [ ! -z "$${DD_PROFILING_ENABLED}" ]; then
                |    export __ENABLE_PROFILING__=$${DD_PROFILING_ENABLED}
                |  else
@@ -121,7 +121,7 @@ object DatadogAPM extends AutoPlugin {
                |else
                |  export __ENABLE_PROFILING__=false
                |fi
-               |if [ "$${__ENABLE_PROFILING__}" == "true" ]; then
+               |if [ "$${__ENABLE_PROFILING__}" = "true" ]; then
                |  if [ ! -z "$${DD_PROFILING_DIRECTALLOCATION_ENABLED}" ]; then
                |    export __ENABLE_ALLOCATION_PROFILING__=$${DD_PROFILING_DIRECTALLOCATION_ENABLED}
                |  else
