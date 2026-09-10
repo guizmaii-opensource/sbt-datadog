@@ -16,7 +16,7 @@ ThisBuild / developers    :=
 
 val scala212     = "2.12.21"
 val scala3       = "3.3.8"
-val scalaForSbt2 = "3.8.4"
+val scalaForSbt2 = "3.9.0"
 
 lazy val root =
   project
