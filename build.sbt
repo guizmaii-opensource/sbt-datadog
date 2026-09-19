@@ -45,7 +45,7 @@ lazy val `sbt-datadog` =
           case _      => "2.0.6"
         }
       },
-      addSbtPlugin("com.github.sbt" % "sbt-native-packager" % "1.11.7" % "provided"),
+      addSbtPlugin("com.github.sbt" % "sbt-native-packager" % "1.12.0" % "provided"),
     )
 
 lazy val `zio-opentelemetry-datadog-tracing-provider` =
